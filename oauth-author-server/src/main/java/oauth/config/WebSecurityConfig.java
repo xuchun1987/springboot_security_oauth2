@@ -1,7 +1,9 @@
 package oauth.config;
 
+import oauth.dao.UserRepository;
 import oauth.security.OauthLoginSuccessHandler;
 import oauth.security.OauthUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,8 +20,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-
 
     //自定义UserDetailsService注入
     @Bean
@@ -41,6 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //springSecurity4.0后，默认开启了CSRD拦截
+
         http.
                 csrf().disable()
                 .authorizeRequests()
@@ -71,8 +72,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers("/static/**")
-                .antMatchers("/frame/**");
+                .antMatchers("/static/dist/**");
+               // .antMatchers("/frame/**");
     }
 
     @Override

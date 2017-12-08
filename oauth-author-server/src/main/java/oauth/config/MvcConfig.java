@@ -13,8 +13,9 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         //这边所有的配置都是不被security拦截的
-        registry.addViewController("/").setViewName("admin/index");
-        registry.addViewController("/login").setViewName("admin/login");
+        //对应的viewname为项目路径而非controller的path
+        //registry.addViewController("/").setViewName("admin/index.html");
+        registry.addViewController("/login").setViewName("admin/login.html");
     }
 
 }

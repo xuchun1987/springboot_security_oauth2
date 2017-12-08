@@ -9,11 +9,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-
 
 public class OauthUserDetailsService implements UserDetailsService {
 
@@ -25,12 +25,9 @@ public class OauthUserDetailsService implements UserDetailsService {
 
 
 
-
-
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        logger.error("--------------dfsdfdsfsdf："+username);
+        logger.info("--------------获取到的username："+username);
         //根据登录名，查询用户
         User user=userRepository.findByUsername(username.trim());
         if(user==null){
@@ -45,6 +42,5 @@ public class OauthUserDetailsService implements UserDetailsService {
 
         return new org.springframework.security.core.userdetails.User(username,user.getPassword(),collection);
     }
-
 
 }

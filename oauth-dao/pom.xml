@@ -10,6 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>oauth-dao</artifactId>
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,6 +39,6 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>cwbb-dao</finalName>
+        <finalName>oauth-dao</finalName>
     </build>
 </project>

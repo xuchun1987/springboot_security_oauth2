@@ -25,10 +25,11 @@ public class User {
     private String status;
 
     @OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-    @JoinTable(name="user_role",
+    @JoinTable(name="oauth_user_role",
             joinColumns={ @JoinColumn(name="uid",referencedColumnName="id")},
             inverseJoinColumns={@JoinColumn(name="rid",referencedColumnName="id")})
     private List<Role> list = new ArrayList<Role>();
+
 
     public List<Role> getList() {
         return list;
